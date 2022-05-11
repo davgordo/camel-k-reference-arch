@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: maven-settings
+data:
+  settings.xml: |
+    <?xml version="1.0" encoding="UTF-8"?>
+    <settings xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
+
+      <servers>
+        <server>
+          <id>internal</id>
+          <username>admin</username>
+          <password>admin123</password>
+        </server>
+      </servers>
+
+      <mirrors>
+        <mirror>
+          <id>internal</id>
+          <name>internal</name>
+          <url>http://nexus.nexus.svc.cluster.local/repository/maven-public/</url>
+          <mirrorOf>*</mirrorOf>
+        </mirror>
+      </mirrors>
+
+    </settings>
